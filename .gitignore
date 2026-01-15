@@ -1,11 +1,15 @@
 # Dependencies
 node_modules/
-package-lock.json
 
 # Build output
 dist/
 build/
-client/
+
+# 1. Ignore everything inside the client folder
+client/*
+
+# 3. Explicitly unignore the lock file
+!client/package-lock.json
 # Environment variables
 .env
 .env.local
