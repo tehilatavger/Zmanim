@@ -7,7 +7,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: 'my-dayTimes-app-2026'
-  NODE_VERSION: '20'
+  NODE_VERSION: '20.*'
 
 jobs:
   build:
@@ -18,10 +18,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 20.*
           cache: 'npm'
           # Use the server's lockfile for caching
-          cache-dependency-path: server/package-lock.json
+          cache-dependency-path: |
+            server/package-lock.json
+            client/package-lock.json
 
       - name: Build and Install Backend
         run: |
