@@ -6,7 +6,7 @@ dist/
 build/
 
 # 1. Ignore everything inside the client folder
-client/*
+# client/*
 
 # 3. Explicitly unignore the lock file
 !client/package-lock.json
