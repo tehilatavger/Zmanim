@@ -7,7 +7,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: 'my-dayTimes-app-2026'
-  NODE_VERSION: '20.*'
+  NODE_VERSION: '22'
 
 jobs:
   build:
@@ -18,16 +18,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.*
+          node-version: 22
           cache: 'npm'
           # Use the server's lockfile for caching
           cache-dependency-path: |
-            server/package-lock.json
+            hebcal-server/package-lock.json
             client/package-lock.json
 
       - name: Build and Install Backend
         run: |
-          cd server
+          cd hebcal-server
           npm install
           # This builds your TS if you have a build script
           npm run build --if-present 
@@ -37,7 +37,7 @@ jobs:
         with:
           name: node-app
           # We upload the entire server folder (which includes /public)
-          path: ./server 
+          path: ./hebcal-server 
 
   deploy:
     runs-on: ubuntu-latest
